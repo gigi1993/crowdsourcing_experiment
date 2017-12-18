@@ -1,0 +1,55 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+        <title>Spoofer Test</title>
+        <script>
+            function validateForm() {
+                var x = document.forms["FormAgain"]["prolific_id"].value;
+
+                if (x == "") {
+                    alert("Please control to have entered a correct PROLOFIC ID");
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div style="background-color: #333; margin-top: 0; padding: 3px 3px 3px 3px;">
+        </div>
+        <div class = "header">
+            <h1>Spoofer Test</h1>
+            <h3 align="center">Download, install and run a research application</h3>
+        </div>
+        <div style="background-color: #333; margin-top: 0; padding: 3px 3px 3px 3px;">
+        </div>
+        
+        <div class="content"> 
+            <div align="center">
+                <h1 style="margin-top: -15px;">Thank you!</h1>
+                <h3>Your submission is complete! We have saved your submission in our system, it will be processed and validated as soon as possible.</h3>
+                <h3>This is your completation code for your submission on Prolific: XXXXXX</h3>
+                <br>
+                <h3>Would you like to do this task again?</h3>
+                <p>We are planning to run again this type of task in the future, and your contribution would be valuable for us. <br><br>If you agree to run again this task in the future, please eneter your PROLIFIC ID in the box below. <br>If you are not interested, you can directly close this page.</p>
+                <form name="FormAgain" method="POST" class="post-form" onsubmit="return validateForm()">{% csrf_token %}
+                            {{ form.as_p }}
+                    <input type="submit" value="Submit"/>
+                </form>
+            </div>
+        </div>
+        <div class = "footer">
+            <br>
+            <div>
+                <ul>
+                    <li style="float:left; margin-left: 35px; margin-top: 35px;"><a href="mailto:infospoofing.contact@gmail.com">infospoofing.contact@gmail.com</a></li>
+                    <li style="margin-top: 35px; margin-left: 35px;"><a href="https://www.tudelft.nl/tbm/over-de-faculteit/afdelingen/multi-actor-systems/sections/policy-organisation-law-gaming/research/economics-of-cybersecurity/"  target="_blank">Economics of Cybersecurity</a></li>
+                    <li style="float:right; margin-right: 35px;"> <a href="https://www.tudelft.nl"  target="_blank"><img border="0" alt="TUDelft" src="{% static 'TUDelft.png' %}" width="170" height="100"></a></li>
+                </ul>
+            </div>
+        </div> 
+    </body>
+</html>
