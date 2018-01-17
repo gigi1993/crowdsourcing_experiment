@@ -22,10 +22,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'gsj7aj-o^76cxl)_8==mfpd@c($_8mlq!4vnq6!y&((f59=uzw'
 
+#with open('/home/infospoofing/crowdsourcing_experiment/crowdsourcing_experiment/etc/sk.txt') as f:
+#    SECRET_KEY = f.read().strip()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 
-ALLOWED_HOSTS = []
+
+
+#ALLOWED_HOSTS = ['infospoofing.pythonanywhere.com']
 
 
 # Application definition

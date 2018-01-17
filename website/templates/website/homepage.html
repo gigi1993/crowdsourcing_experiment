@@ -2,11 +2,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
         <title>Spoofer Test</title>
-                <script>
+        <style>
+            #id_spoofer_URL {
+                width: 500px;
+            }
+        </style>
+        <script>
             function ShowWin() {
                 var x = document.getElementById("win_instructions");
                 if (x.style.display === "block") {
@@ -16,6 +21,8 @@
                     y.style.display = "none";
                     var z = document.getElementById("ubu_instructions");
                     z.style.display = "none"
+                    var element = document.getElementById("win_instructions");
+                    element.scrollIntoView()
                 }
             }
         </script>
@@ -29,9 +36,11 @@
                     y.style.display = "none";
                     var z = document.getElementById("ubu_instructions");
                     z.style.display = "none"
+                    var element = document.getElementById("mac_instructions");
+                    element.scrollIntoView()
                 }
             }
-        </script> 
+        </script>
         <script>
             function ShowUbu() {
                 var x = document.getElementById("ubu_instructions");
@@ -42,6 +51,8 @@
                     y.style.display = "none";
                     var z = document.getElementById("mac_instructions");
                     z.style.display = "none"
+                    var element = document.getElementById("ubu_instructions");
+                    element.scrollIntoView()
                 }
             }
         </script>
@@ -49,20 +60,30 @@
             function validateFormWin() {
                 var x = document.forms["FormWin"]["prolific_id"].value;
                 var y = document.forms["FormWin"]["spoofer_URL"].value;
+                var z = String(y);
 
                 if (x == ""||y == "") {
-                    alert("Please control to have entered a correct PROLOFIC ID and SPOOFER URL");
+                    alert("PROLOFIC ID and SPOOFER URL cannot be empty!");
+                    return false;
+                }
+                if (z.indexOf("/spoofer.caida.org/report.php?sessionkey=") < 0) {
+                    alert("Incorrect SPOOFER URL!");
                     return false;
                 }
             }
-        </script> 
+        </script>
         <script>
             function validateFormMac() {
                 var x = document.forms["FormMac"]["prolific_id"].value;
                 var y = document.forms["FormMac"]["spoofer_URL"].value;
+                var z = String(y);
 
                 if (x == ""||y == "") {
-                    alert("Please control to have entered a correct PROLOFIC ID and SPOOFER URL");
+                    alert("PROLOFIC ID and SPOOFER URL cannot be empty!");
+                    return false;
+                }
+                if (z.indexOf("/spoofer.caida.org/report.php?sessionkey=") < 0) {
+                    alert("Incorrect SPOOFER URL!");
                     return false;
                 }
             }
@@ -71,9 +92,14 @@
             function validateFormUbu() {
                 var x = document.forms["FormUbu"]["prolific_id"].value;
                 var y = document.forms["FormUbu"]["spoofer_URL"].value;
+                var z = String(y);
 
                 if (x == ""||y == "") {
-                    alert("Please control to have entered a correct PROLOFIC ID and SPOOFER URL");
+                    alert("PROLOFIC ID and SPOOFER URL cannot be empty!");
+                    return false;
+                }
+                if (z.indexOf("/spoofer.caida.org/report.php?sessionkey=") < 0) {
+                    alert("Incorrect SPOOFER URL!");
                     return false;
                 }
             }
@@ -86,8 +112,8 @@
                 -moz-transition: all 1s ease;
                 -ms-transition: all 1s ease;
                 transition: all 1s ease;
-                
-                display: block; 
+
+                display: block;
                 margin: auto;
             }
             .zoomin img:hover {
@@ -102,7 +128,7 @@
 
     </head>
     <body>
-    	<div style="background-color: #333; margin-top: 0; padding: 3px 3px 3px 3px;">
+        <div style="background-color: #333; margin-top: 0; padding: 3px 3px 3px 3px;">
         </div>
         <div class = "header">
             <h1>Spoofer Test</h1>
@@ -110,44 +136,44 @@
         </div>
         <div style="background-color: #333; margin-top: 0; padding: 3px 3px 3px 3px;">
         </div>
-        <div class="content"> 
+        <div class="content">
             <h1 align="center" style="margin-top: -15px;">Welcome!</h1>
             <br>
             <p>
             We are researchers from <b>Delft University of Technology (TU Delft) </b>  and we invite users from countries around the world to help us collect data! It is very simple. You don't have to do any work. Just download the test application (called "Spoofer"), run it, and submit the results at the bottom of the page.
             </p>
 
-			<p><b>You can start right now with Step 1!</b></p>
-            
+            <p><b>You can start right now with Step 1!</b></p>
+
             <p>
 
             In case you want more background information: the test measures whether a network has implemented a best practice called BCP38, which helps to keep networks and users safe from harm. You can find more information about BCP38 <a href="https://tools.ietf.org/html/bcp38" target="_blank"> <font color=#267C7F>here</font></a>. You can find more information about the test application "Spoofer" <a href="https://www.caida.org/projects/spoofer/faq.xml" target="_blank"> <font color=#267C7F> here</font></a>. The app is completely safe and can be uninstalled after submitting the results. If you have more questions, feel free to contact us at: <a href="mailto:infospoofing.contact@gmail.com"><font color=#267C7F> infospoofing.contact@gmail.com</font></a>.<br>
             </p>
 
-			<div align="center">
-				<h2>Step 1</h2>
-				<h4>Select your operating system:</h4>
-    			<form action="" class="radioform">
-					<input type="radio" class="big" name="OS" id="0" value="win" onclick="ShowWin()"> Windows &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" class="big" name="OS" id="1" value="mac" onclick="ShowMac()"> Mac OS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-					<input type="radio" class="big" name="OS" id="2" value="ubu" onclick="ShowUbu()"> Ubuntu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				</form>
-	        </div>
+            <div align="center">
+                <h2>Step 1</h2>
+                <h4>Select your operating system:</h4>
+                <form action="" class="radioform">
+                    <input type="radio" class="big" name="OS" id="0" value="win" onclick="ShowWin()"> Windows &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="big" name="OS" id="1" value="mac" onclick="ShowMac()"> Mac OS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="big" name="OS" id="2" value="ubu" onclick="ShowUbu()"> Ubuntu &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p style="font-size:12px;"> If nothing happens, please check if you have JavaScript enabled (see: <a href="https://www.enable-javascript.com" style="color: #267C7F;" target="_blank">HERE</a>)</p>
+                </form>
+            </div>
 <!--WINDOWS INSTRUCTIONS-->
-	        <div align="center" id="win_instructions" style="display:none;">
-	        	<br>
-				<h2 align="center">Step 2</h2>
-				<h4 align="center">Download Application</h4>
-				<p>Please click on the following link to download the application: <a href="https://www.caida.org/projects/spoofer/downloads/Spoofer-1.1.0-win32.exe" style="color: #267C7F;">Download Application</a>
-				</p>
-				<br>
-				<h2 align="center">Step 3</h2>
-				<h4 align="center">Install Application</h4>
-				<p>Please double-click on the downloaded file to start the installation process. Please follow the instructions shown in figures, pay attention to the options highlighted in red. </p>
-				
+            <div align="center" id="win_instructions" style="display:none;">
+                <h2 align="center">Step 2</h2>
+                <h4 align="center">Download Application</h4>
+                <p>Please click on the following link to download the application: <a href="https://www.caida.org/projects/spoofer/downloads/Spoofer-1.1.0-win32.exe" style="color: #267C7F;">Download Application</a>
+                </p>
+                <br>
+                <h2 align="center">Step 3</h2>
+                <h4 align="center">Install Application</h4>
+                <p>Please double-click on the downloaded file to start the installation process. Please follow the instructions shown in figures, pay attention to the options highlighted in red. </p>
+
                 <div class="zoomin">
                     <img src="{%static 'instructions/windows/run_1.png' %}" alt=""/>
-    				
+
                     <br>
                     <img src="{%static 'instructions/windows/run_2.png' %}" alt=""/>
                     <br>
@@ -159,7 +185,7 @@
                     <br>
                     <img src="{%static 'instructions/windows/run_6.png' %}" alt=""/>
                     <br>
-    				<img src="{%static 'instructions/windows/run_7.png' %}" alt=""/>
+                    <img src="{%static 'instructions/windows/run_7.png' %}" alt=""/>
                     <br>
                     <img src="{%static 'instructions/windows/run_8.png' %}" alt=""/>
                     <br>
@@ -177,15 +203,16 @@
                     <br>
                 </div>
 
-				<h2 align="center">Step 4</h2>
-				<h4 align="center">Run Application</h4>
-				<p>Click on the <em> Start Tests </em>  button and wait until the test is finished</p>
+                <h2 align="center">Step 4</h2>
+                <h4 align="center">Run Application</h4>
+                <p>Click on the <em> Start Tests </em>  button and wait until the test is finished</p>
                 <div class="zoomin">
                     <img src="{%static 'instructions/windows/run_15.5.png' %}" alt=""/>
+                    <br>
                     <img src="{%static 'instructions/windows/run_15.png' %}" alt=""/>
                 </div>
 
-				<br/>
+                <br/>
                 <p>Once the test has finished, a link  appears in the <i>report</i> column, as shown in the figure below. Please click on the link.</p>
                 <div class="zoomin">
                     <img src="{%static 'instructions/windows/run_16.png' %}" alt=""/>
@@ -193,45 +220,48 @@
 
                 <br>
                 <h2 align="center">Step 5</h2>
-				<h4 align="center">Submit Results</h4>
-				<p>Choose your browser.</p>
-				<br>
+                <h4 align="center">Submit Results</h4>
+                <p>Choose your browser.</p>
+                <br>
                 <div class="zoomin">
-				    <img src="{%static 'instructions/windows/run_17.png' %}" alt=""/>
+                    <img src="{%static 'instructions/windows/run_17.png' %}" alt=""/>
                 </div>
                 <br/>
                 <p>Please copy the URL from the browser, paste it in the <mark>Spoofer URL</mark> box below together with your ProlificID, and press the <mark>Submit</mark> button. </p>
                 <br/>
                 <div class="zoomin">
                     <img src="{%static 'instructions/windows/run_18.png' %}" alt=""/>
-                </div>  
+                </div>
                 <br/>
                 <div align="center">
-				<h2 align="center">Submit results</h2>
-			    	
-			    	<p style="color: red">Please note that these information are FUNDAMENTAL to process your payment.</p>
-                    <p>You may take a screenshot of this form as a proof of completation, in case something goes wrong.</p>
-					<form name="FormWin" method="POST" class="post-form" onsubmit="return validateFormWin()">{% csrf_token %}
-			        	{{ form.as_p }}
-			       		<input type="submit" value="Submit"/>
-			    	</form>
+                <h2 align="center">Submit results</h2>
 
-			    </div>
-			</div>
+                    <p style="color: red">Please note that this information is FUNDAMENTAL to process your payment.</p>
+                    <p>You may take a screenshot of this form as a proof of completation, in case something goes wrong.</p>
+                    <form name="FormWin" method="POST" class="post-form" onsubmit="return validateFormWin()" style="width: 900px;">{% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Submit"/>
+                    </form>
+                    <br>
+                    </br>
+                    <br>
+                    </br>
+
+                </div>
+            </div>
 <!--MAC INSTRUCTIONS-->
-			<div align="center" id="mac_instructions" style="display:none;">
+            <div align="center" id="mac_instructions" style="display:none;">
+                <h2 align="center">Step 2</h2>
+                <h4 align="center">Download Application</h4>
+                <p>Please click on the following link to download the application: <a href="https://www.caida.org/projects/spoofer/downloads/Spoofer-1.1.0-macosx.pkg" style="color: #267C7F;">Download Application</a>
+                </p>
                 <br>
-				<h2 align="center">Step 2</h2>
-				<h4 align="center">Download Application</h4>
-				<p>Please click on the following link to download the application: <a href="https://www.caida.org/projects/spoofer/downloads/Spoofer-1.1.0-macosx.pkg" style="color: #267C7F;">Download Application</a>
-				</p>
-				<br>
-				<h2 align="center">Step 3</h2>
-				<h4 align="center">Install Application</h4>
-				<p>Please double-click on the downloaded file to start the installation process. Please follow the instructions shown in figures, pay attention to the options highlighted in red. </p>
+                <h2 align="center">Step 3</h2>
+                <h4 align="center">Install Application</h4>
+                <p>Please double-click on the downloaded file to start the installation process. Please follow the instructions shown in figures, pay attention to the options highlighted in red. </p>
                 <div class="zoomin">
                     <img src="{%static 'instructions/run_1.png' %}" alt=""/>
-    				<br>
+                    <br>
                     <img src="{%static 'instructions/run_2.png' %}" alt=""/>
                     <br>
                     <img src="{%static 'instructions/run_3.png' %}" alt=""/>
@@ -245,16 +275,16 @@
                 </div>
                 <p>You may have to enter your username and password</p>
                 <div class="zoomin">
-				    <img src="{%static 'instructions/run_7.png' %}" alt=""/>
+                    <img src="{%static 'instructions/run_7.png' %}" alt=""/>
                 <br>
                 </div>
-				<h2 align="center">Step 4</h2>
-				<h4 align="center">Run Application</h4>
-				<p>Click on the <em> Start Tests </em>  button and wait until the test is finished</p>
+                <h2 align="center">Step 4</h2>
+                <h4 align="center">Run Application</h4>
+                <p>Click on the <em> Start Tests </em>  button and wait until the test is finished</p>
                 <br>
                 <div class="zoomin">
                     <img src="{%static 'instructions/run_11.png' %}" alt=""/>
-    				<br/>
+                    <br/>
                     <img src="{%static 'instructions/run_12.png' %}" alt=""/>
                     <br/>
                 </div>
@@ -264,7 +294,7 @@
                     <br>
                 </div>
                 <h2 align="center">Step 5</h2>
-				<h4 align="center">Submit Results</h4>
+                <h4 align="center">Submit Results</h4>
                 <br/>
                 <p>Please copy the URL from the browser, paste it in the <mark>Spoofer URL</mark> box below together with your ProlificID, and press the <mark>Submit</mark> button. </p>
                 <br/>
@@ -274,24 +304,28 @@
                 </div>
                 <div align="center">
                 <h2 align="center">Submit results</h2>
-                    
-                    <p style="color: red">Please note that these information are FUNDAMENTAL to process your payment.</p>
+
+                    <p style="color: red">Please note that this information is FUNDAMENTAL to process your payment.</p>
                     <p>You may take a screenshot of this form as a proof of completation, in case something goes wrong.</p>
                     <form name="FormMac" method="POST" class="post-form" onsubmit="return validateFormMac()">{% csrf_token %}
                         {{ form.as_p }}
                         <input type="submit" value="Submit"/>
                     </form>
+                    <br>
+                    </br>
+                    <br>
+                    </br>
+
 
                 </div>
-			</div>
+            </div>
 <!--UBUNTU INSTRUCTIONS-->
-			<div id="ubu_instructions" style="display:none;">
-                <br>
+            <div align="center" id="ubu_instructions" style="display:none;">
                 <h2 align="center">Step 2</h2>
                 <h4 align="center">Install Application</h4>
                 <p>Open the Terminal application.</p>
                 <div class="zoomin">
-                    <img src="{%static 'instructions/ubuntu/run_2.png' %}" alt=""/> 
+                    <img src="{%static 'instructions/ubuntu/run_2.png' %}" alt=""/>
                     <br>
                 </div>
                 <h4 align="center">Installation on Ubuntu 16.04 </h4>
@@ -312,7 +346,7 @@
                         tar -xvf Spoofer-1.0.6-ubuntu-14.04.tar.gz
                         <br/>
                         cd Spoofer-1.0.6-ubuntu-14.04
-                        <br/>  
+                        <br/>
                         sudo apt-get install gdebi-core
                     </div>
                 </p>
@@ -356,14 +390,15 @@
                     <br>
                 </div>
                 <p>Click on the <em> Start Tests </em>  button and wait until the test is finished.</p>
-                <br>
                 <div class="zoomin">
                     <img src="{%static 'instructions/ubuntu/run_17b.png' %}" alt=""/>
-                    <br>
-                    <img src="{%static 'instructions/ubuntu/run_18.png' %}" alt=""/>
                 </div>
                 <br>
                 <p> Once the test has finished, a link called <i>report</i> appears. Please click on the link.</p>
+                <div class="zoomin">
+                    <img src="{%static 'instructions/ubuntu/run_18.png' %}" alt=""/>
+                </div>
+                <br>
                 <h2 align="center">Step 4</h2>
                 <h4 align="center">Submit Results</h4>
                 <br/>
@@ -374,27 +409,28 @@
                 </div>
                 <div align="center">
                 <h2 align="center">Submit results</h2>
-                    
-                    <p style="color: red">Please note that these information are FUNDAMENTAL to process your payment.</p>
+
+                    <p style="color: red">Please note that this information is FUNDAMENTAL to process your payment.</p>
                     <p>You may take a screenshot of this form as a proof of completation, in case something goes wrong.</p>
                     <form name="FormUbu" method="POST" class="post-form" onsubmit="return validateFormUbu()">{% csrf_token %}
                         {{ form.as_p }}
                         <input type="submit" value="Submit"/>
                     </form>
-
+                    <br>
+                    </br>
+                    <br>
+                    </br>
                 </div>
-			</div>
-        </div>
-        </div>
-        <div class = "footer">
-            <br>
-            <div>
-                <ul>
-                    <li style="float:left; margin-left: 35px; margin-top: 35px;"><a href="mailto:infospoofing.contact@gmail.com">infospoofing.contact@gmail.com</a></li>
-                    <li style="margin-top: 35px; margin-left: 35px;"><a href="https://www.tudelft.nl/tbm/over-de-faculteit/afdelingen/multi-actor-systems/sections/policy-organisation-law-gaming/research/economics-of-cybersecurity/"  target="_blank">Economics of Cybersecurity</a></li>
-                    <li style="float:right; margin-right: 35px;"> <a href="https://www.tudelft.nl"  target="_blank"><img border="0" alt="TUDelft" src="{% static 'TUDelft.png' %}" width="170" height="100"></a></li>
-                </ul>
             </div>
-        </div> 
+        </div>
+        </div>
+        <div class = "footer" style="position:fixed; bottom:0; width:100%; padding: 7px 7px 7px 7px;">
+            <div id="external" style="overflow: hidden;">
+                <br>
+                <a style="float: left; margin-left: 35px;""margin-left: 100px;" href="https://www.tudelft.nl/tbm/over-de-faculteit/afdelingen/multi-actor-systems/sections/policy-organisation-law-gaming/research/economics-of-cybersecurity/"  target="_blank"><font color=#ffffff> Economics of Cybersecurity</font></a>
+                <a style="margin-left: 100px;" href="mailto:infospoofing.contact@gmail.com"><font color=#ffffff> infospoofing.contact@gmail.com</font></a>
+                <a style="float: right; margin-right: 35px; margin-top: -20px;"href="https://www.tudelft.nl"  target="_blank"><img border="0" alt="TUDelft" src="{% static 'TUDelft.png' %}" width="150" height="50" style="display: inline-block;"></a>
+            </div>
+        </div>
     </body>
 </html>
