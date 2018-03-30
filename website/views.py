@@ -10,9 +10,9 @@ from website.models import Failed
 from website.models import Again
 from website.models import AutonomousSystem
 from django.core.exceptions import ObjectDoesNotExist
-import pyasn
-import math
-from geolite2 import geolite2
+#import pyasn
+#import math
+#from geolite2 import geolite2
 
 # Function that get user's IP
 def get_ip(request):
@@ -28,28 +28,31 @@ def get_ip(request):
 
 # Function that lookup the AS given the IP
 def get_asn(ip):
-    asndb = pyasn.pyasn('/home/infospoofing/crowdsourcing_experiment/ipasn.dat')        # Initialize database ASN
-    asn = asndb.lookup(ip)[0]
+    #asndb = pyasn.pyasn('/home/infospoofing/crowdsourcing_experiment/ipasn.dat')        # Initialize database ASN
+    #asn = asndb.lookup(ip)[0]
+    asn = 0000
     return asn
 
 # Function that retun number of datapoint given AS
 def get_dataPoint(asn):
-    db = pyasn.pyasn('/home/infospoofing/crowdsourcing_experiment/ipasn.dat')        # Initialize database ASN
-    all_prefixes = db.get_as_prefixes_effective(asn)
-    size = 0
-    if all_prefixes:
-        for prefix in all_prefixes:
-            pref = prefix.split("/")[1]
-            size = size + (2**(32-int(pref)))
-    dt_points = math.ceil(size/2097152)
+    # db = pyasn.pyasn('/home/infospoofing/crowdsourcing_experiment/ipasn.dat')        # Initialize database ASN
+    # all_prefixes = db.get_as_prefixes_effective(asn)
+    # size = 0
+    # if all_prefixes:
+    #     for prefix in all_prefixes:
+    #         pref = prefix.split("/")[1]
+    #         size = size + (2**(32-int(pref)))
+    # dt_points = math.ceil(size/2097152)
+    dt_points = 15
     return dt_points
 
 # Function that return the country code given the IP
 def get_country_code(ip):
-    reader = geolite2.reader()              # get the Country code using GeoLite2
-    result = reader.get(ip)                 # create a dictionary with different fields ({city}, {country}...)
-    geolite2.close()
-    code=result['country']['iso_code']      #lookup
+    # reader = geolite2.reader()              # get the Country code using GeoLite2
+    # result = reader.get(ip)                 # create a dictionary with different fields ({city}, {country}...)
+    # geolite2.close()
+    # code=result['country']['iso_code']      #lookup
+    code = 1
     return code
 
 # Function that return the right completion code given user's IP
@@ -114,13 +117,15 @@ def homepage(request):
     elif current_country == "DE":
         country_not_ok = False
     elif current_country == "NL":
-         country_not_ok = False
+        country_not_ok = False
     elif current_country == "IT":
-         country_not_ok = False
+        country_not_ok = False
     elif current_country == "PL":
-         country_not_ok = False
+        country_not_ok = False
     elif current_country == "TR":
-         country_not_ok = False
+        country_not_ok = False
+    elif current_country == "1":
+        country_not_ok = False
 
     if country_not_ok:                              # if country is not ok, redirect to /fail
         return redirect('fail')
